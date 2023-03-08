@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginForm from './components/LoginForm.js'
+import { useState } from 'react'
 
 function App() {
+  const [codeValue, setCodeValue] = useState('')
+
+  const submitForm = (event) => {
+    event.preventDefault()
+    console.log('trying code ...')
+    if (codeValue === 'password') {
+
+    }
+    setCodeValue('')
+  }
+
+  const handleCodeValueChanged = (event) => {
+    setCodeValue(event.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='center'>
+      <LoginForm 
+        onSubmitFunc={submitForm}
+        formValue={codeValue}
+        onValueChange={handleCodeValueChanged}
+      />
     </div>
   );
 }
