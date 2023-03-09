@@ -2,23 +2,6 @@
   --background-color: rgb(0, 50, 65)
 }
 
-.pixelText {
-  color: white;
-  font-smooth: never;
-  font-family: 'Bahnschrift SemiBold', sans-serif;
-}
-
-.center {
-  display: block;
-  text-align: center;
-  margin: 10%;
-}
-
-button {
-  background-color: var(--background-color);
-  border-color: white;
-}
-
 body {
   background-color: var(--background-color);
   margin: 0;

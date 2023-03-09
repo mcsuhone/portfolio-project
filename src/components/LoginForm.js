@@ -1,25 +1,37 @@
+import { useState } from 'react'
+import { Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
-const LoginForm = ({ onSubmitFunc, formValue, onValueChange }) => {
+const LoginForm = ({ onSubmitFunc }) => {
+  const [codeValue, setCodeValue] = useState('')
+
+  const handleCodeValueChanged = (event) => {
+    setCodeValue(event.target.value)
+  }
+
+  const formSubmit = (event) => {
+    event.preventDefault()
+    setCodeValue('')
+    onSubmitFunc(codeValue)
+  }
+
   return (
-    <form onSubmit={onSubmitFunc}>
-      <div className='pixelText'>
-              enter code
+    <Form className='pixelText' onSubmit={formSubmit}>
+      <div>
+        enter code
       </div>
       <div>
-        <input type='text' value={formValue} onChange={onValueChange}/>
+        <input type='text' value={codeValue} onChange={handleCodeValueChanged}/>
       </div>
-      <button className='pixelText' type="submit">
-              login
+      <button className='generalbutton pixelText' type="submit">
+        login
       </button>
-    </form>
+    </Form>
   )
 }
 
 LoginForm.propTypes = {
-  onSubmitFunc: PropTypes.func.isRequired,
-  formValue: PropTypes.string.isRequired,
-  onValueChange: PropTypes.func.isRequired
+  onSubmitFunc: PropTypes.func.isRequired
 }
 
 export default LoginForm
